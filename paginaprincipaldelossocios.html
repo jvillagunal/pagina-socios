@@ -1,0 +1,1649 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Ing | Una Nueva Visión para ti, tu Familia y tu Futuro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-color: #0a2540;
+            --secondary-color: #00d4ff;
+            --accent-color: #ff6b35;
+            --gold-color: #FFD700;
+            --platinum-color: #E5E4E2;
+            --background-light: #f8f9fa;
+            --background-dark: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #f8f9fa;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        /* Enhanced Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1;
+            border-radius: var(--border-radius);
+            padding: 0.5rem 0;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: var(--transition);
+        }
+
+        .dropdown-content a {
+            color: var(--primary-color);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:hover {
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 53, 0.1));
+            padding-left: 30px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced Hero Section */
+        #inicio {
+            padding-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        #inicio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1559305616-3f99cd43e353?q=80&w=2073&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 107, 53, 0.05));
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Brand Cards */
+        .brands-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .brand-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .brand-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-body {
+            padding: 2rem;
+        }
+
+        /* Membership Cards */
+        .memberships-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .membership-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .membership-card.platinum {
+            border-top: 5px solid var(--platinum-color);
+        }
+
+        .membership-card.golden {
+            border-top: 5px solid var(--gold-color);
+        }
+
+        .membership-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .membership-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--gold-color), #FFA500);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .membership-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .membership-card ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .membership-card ul li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .membership-card ul li i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .product-body {
+            padding: 1.5rem;
+        }
+
+        /* Social Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-method {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-method i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Jobs Section */
+        .jobs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .job-type {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: #051a33;
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.5rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+        }
+
+        /* Floating Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            animation: pulse 2s infinite;
+            transition: var(--transition);
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 212, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+            }
+        }
+
+        .chat-tooltip {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 998;
+        }
+
+        .chat-button:hover + .chat-tooltip {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 2rem 0;
+                box-shadow: var(--shadow-lg);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .memberships-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-circle {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(0, 212, 255, 0.1);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#inicio" class="logo">
+                <i class="fas fa-glasses"></i>
+                Vision Ing
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#quienes-somos">Quiénes Somos</a>
+                    <div class="dropdown-content">
+                        <a href="#historia">Nuestra Historia</a>
+                        <a href="#mision-vision">Misión y Visión</a>
+                        <a href="#compromiso-social">Compromiso Social</a>
+                    </div>
+                </li>
+                <li><a href="#nuestras-marcas">Nuestras Marcas</a></li>
+                <li><a href="#membresias">Membresías</a></li>
+                <li><a href="#productos-servicios">Productos y Servicios</a></li>
+                <li><a href="#trabaja-con-nosotros">Únete al Equipo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Vision Ing: Una Nueva Visión para ti, tu Familia y tu Futuro</h1>
+                    <p class="subtitle">Somos tu óptica virtual con un propósito social. Te ofrecemos una atención personalizada, productos de calidad y un camino para crecer.</p>
+                    <div class="hero-buttons">
+                        <a href="#membresias" class="btn">CONOCE TU MEMBRESÍA</a>
+                        <a href="#quienes-somos" class="btn btn-outline">Conoce Nuestra Historia</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Más que una óptica, un ecosistema de bienestar y crecimiento</h2>
+                <p class="section-subtitle">Transformamos la industria óptica con innovación y honestidad</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3>Gestión 100% Virtual</h3>
+                        <p>Tu óptica a un clic de distancia. Atendemos tus consultas desde nuestro call center y te guiamos en todo el proceso.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Membresías Exclusivas</h3>
+                        <p>Fidelizamos tu visión con beneficios únicos para ti y tu familia. Descuentos reales y comisiones por referidos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Compromiso Social</h3>
+                        <p>Cada compra apoya a una causa. Somos Óptica G3, llevando salud visual a quienes más lo necesitan.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Mentoría para Emprendedores</h3>
+                        <p>Transforma tu negocio con la experiencia de Andrés Aguiar. Visionamos juntos tu futuro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section style="background: var(--background-light);">
+            <div class="container">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">La experiencia de quienes ya confían en nosotros</p>
+                
+                <div class="testimonials-container">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"La atención virtual de Vision Ing es increíblemente práctica. No solo recibí mis gafas a domicilio, sino que también pude programar mi cita sin salir de casa. El servicio es de otro nivel."</p>
+                        <p class="testimonial-author">- María González</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Gracias a la membresía Platinum, mi esposa y mis hijos también se beneficiaron. El descuento es real y la comisión por recomendarlos es un plus inesperado. ¡Estoy encantado!"</p>
+                        <p class="testimonial-author">- Carlos Rodríguez</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"La mentoría de Andrés Aguiar transformó mi negocio. Su experiencia en el sector textil y hostelería fue invaluable para reestructurar mi empresa."</p>
+                        <p class="testimonial-author">- Ana Martínez</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="quienes-somos">
+            <div class="container">
+                <h2 class="section-title">Nuestra Historia</h2>
+                <p class="section-subtitle">Una visión honesta que transformó una industria</p>
+                
+                <div id="historia" style="padding: 3rem; background: white; border-radius: var(--border-radius); margin: 2rem 0; box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 2rem;">La Visión de la Honestidad</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Nuestra historia comenzó con una simple pregunta: <strong>¿por qué un artículo tan esencial como las gafas cuesta tanto?</strong> Hace años, en el corazón de la industria, vimos cómo personas necesitadas pagaban precios exorbitantes por productos que costaban una fracción de lo que se les cobraba.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                        Nos dimos cuenta de que la falta de información creaba un vacío que muchas ópticas aprovechaban para lucrarse. Nos negamos a ser parte de ese ciclo. Así nació nuestra misión: <strong>democratizar el acceso al cuidado de la vista</strong>. A través de un modelo digital, eliminamos los costos innecesarios y pasamos ese ahorro directamente a nuestros clientes.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        Hoy, nuestra alianza de marcas está aquí para ofrecerte un servicio óptico transparente, justo y accesible, directo a tu pantalla. <strong>Porque creemos que la honestidad es la mejor forma de ver el mundo.</strong>
+                    </p>
+                </div>
+
+                <div id="mision-vision" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                    <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); padding: 2rem; border-radius: var(--border-radius);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-bullseye"></i> Misión
+                        </h3>
+                        <p>Vision Ing es una óptica virtual dedicada a ofrecer soluciones de salud visual de alta calidad, asequibles y personalizadas. Nuestro propósito es gestionar eficientemente a cada cliente y, al mismo tiempo, generar un impacto social positivo y apoyar a emprendedores a transformar sus ideas en negocios sólidos, porque nuestra visión va más allá de tus ojos.</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 53, 0.1)); padding: 2rem; border-radius: var(--border-radius);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">
+                            <i class="fas fa-eye"></i> Visión
+                        </h3>
+                        <p>Ser la plataforma líder en el sector óptico, reconocida por nuestro modelo de atención 100% virtual, nuestra excelencia en el servicio y nuestro compromiso integral con la comunidad y el desarrollo de nuevos emprendimientos. Queremos ser un referente de innovación y responsabilidad social.</p>
+                    </div>
+                </div>
+
+                <div id="compromiso-social" style="padding: 3rem; background: white; border-radius: var(--border-radius); margin: 3rem 0; box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 2rem; text-align: center;">
+                        <i class="fas fa-hand-holding-heart"></i> Compromiso Social G3
+                    </h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; text-align: center;">
+                        En Alliance Group, creemos que una visión clara no es un lujo, es un derecho. Nuestro programa <strong>"G3"</strong> representa nuestro compromiso con la comunidad: por cada producto vendido, destinamos recursos a llevar cuidado visual a fundaciones, geriátricos y comunidades vulnerables.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: var(--border-radius);">
+                            <i class="fas fa-glasses" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                            <h4>Donación de Gafas</h4>
+                            <p>Entregamos soluciones visuales completas a personas y familias que no tienen acceso a ellas</p>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(255, 107, 53, 0.1); border-radius: var(--border-radius);">
+                            <i class="fas fa-eye" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                            <h4>Exámenes Gratuitos</h4>
+                            <p>Llevamos exámenes de optometría a comunidades vulnerables, detectando problemas de visión a tiempo</p>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem; background: rgba(102, 126, 234, 0.1); border-radius: var(--border-radius);">
+                            <i class="fas fa-hands-helping" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                            <h4>Alianzas Estratégicas</h4>
+                            <p>Colaboramos con programas gubernamentales y organizaciones sin fines de lucro para amplificar nuestro alcance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section id="nuestras-marcas" style="background: var(--background-light);">
+            <div class="container">
+                <h2 class="section-title">Nuestras Marcas</h2>
+                <p class="section-subtitle">Una alianza estratégica por tu visión</p>
+                <div class="brands-container">
+                    <div class="brand-card">
+                        <div class="brand-header">
+                            <i class="fas fa-heart" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>Óptica Social Visual</h3>
+                        </div>
+                        <div class="brand-body">
+                            <p>La marca que nos fundó y el motor de nuestra misión. Nacida para combatir los abusos en la industria óptica, ofrece productos de alta calidad a precios justos, con un compromiso social inquebrantable.</p>
+                            <ul style="margin-top: 1.5rem;">
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Enfoque en accesibilidad</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Precios transparentes</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Compromiso social G3</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="brand-card">
+                        <div class="brand-header">
+                            <i class="fas fa-crown" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>Vision Ing</h3>
+                        </div>
+                        <div class="brand-body">
+                            <p>Va más allá de un par de gafas. Es para quienes valoran el crecimiento personal y una experiencia exclusiva. Nos enfocamos en un servicio de alto nivel, con acceso a la Universidad Vision Ing para tu desarrollo como emprendedor.</p>
+                            <ul style="margin-top: 1.5rem;">
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Experiencia exclusiva</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Universidad Vision Ing</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Productos premium</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="brand-card">
+                        <div class="brand-header">
+                            <i class="fas fa-hands-helping" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h3>G3</h3>
+                        </div>
+                        <div class="brand-body">
+                            <p>El corazón de nuestro compromiso social. Dedicada a llevar ayuda visual a quienes más lo necesitan. A través de nuestra membresía, destinamos una parte de cada compra a un fondo para causas sociales.</p>
+                            <ul style="margin-top: 1.5rem;">
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Ayuda a comunidades</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Fundaciones y geriátricos</li>
+                                <li><i class="fas fa-check-circle" style="color: var(--secondary-color);"></i> Impacto social real</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memberships Section -->
+        <section id="membresias">
+            <div class="container">
+                <h2 class="section-title">Nuestras Membresías</h2>
+                <p class="section-subtitle">Fideliza tu visión, expande tus beneficios</p>
+                
+                <div class="memberships-container">
+                    <div class="membership-card platinum">
+                        <div class="membership-badge">Más Popular</div>
+                        <h3>Membresía VIP Platinum</h3>
+                        <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">Tu entrada a la familia Alliance Group con beneficios exclusivos</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Descuento de hasta el 30% en todos tus productos</li>
+                            <li><i class="fas fa-check"></i> Comisión del 5% por referidos de familiares directos</li>
+                            <li><i class="fas fa-check"></i> Domicilio gratuito en todos tus pedidos</li>
+                            <li><i class="fas fa-check"></i> Beneficios extendidos a familiares de primer grado</li>
+                            <li><i class="fas fa-check"></i> Atención prioritaria en nuestro call center virtual</li>
+                        </ul>
+                        <p style="text-align: center; margin-top: 2rem; font-weight: 700; font-size: 1.5rem;">¡GRATIS!</p>
+                        <a href="#contacto" class="btn" style="width: 100%; text-align: center; margin-top: 1.5rem;">Obtener Membresía</a>
+                    </div>
+                    
+                    <div class="membership-card golden">
+                        <h3>Membresía Golden</h3>
+                        <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">El acceso dorado a un servicio de élite y crecimiento personal</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todos los beneficios de la membresía Platinum</li>
+                            <li><i class="fas fa-check"></i> Comisión premium de hasta el 15% por referidos</li>
+                            <li><i class="fas fa-check"></i> Transporte gratuito a nuestras ópticas</li>
+                            <li><i class="fas fa-check"></i> Acceso a la Universidad Vision Ing</li>
+                            <li><i class="fas fa-check"></i> Alianzas exclusivas con negocios locales</li>
+                            <li><i class="fas fa-check"></i> Invitaciones a eventos y lanzamientos VIP</li>
+                            <li><i class="fas fa-check"></i> Acceso a mentoría emprendedora</li>
+                        </ul>
+                        <a href="#contacto" class="btn" style="width: 100%; text-align: center; margin-top: 1.5rem;">Solicitar Información</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products & Services Section -->
+        <section id="productos-servicios" style="background: var(--background-light);">
+            <div class="container">
+                <h2 class="section-title">Productos y Servicios</h2>
+                <p class="section-subtitle">Soluciones visuales completas para cada necesidad</p>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=1935&auto=format&fit=crop');">
+                            <div class="product-overlay">
+                                <h3>Examen de Optometría</h3>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <p>Evaluación profesional con tecnología de punta para un diagnóstico exacto y detallado de tu salud visual.</p>
+                            <ul style="margin-top: 1rem;">
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Profesionales certificados</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Tecnología avanzada</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Resultados precisos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1591073113125-e46713c829ed?q=80&w=1974&auto=format&fit=crop');">
+                            <div class="product-overlay">
+                                <h3>Monturas</h3>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <p>Encuentra el marco perfecto que refleje tu personalidad con materiales de la más alta calidad.</p>
+                            <ul style="margin-top: 1rem;">
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Acetato (colores vibrantes)</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> TR-90 (ultraligero y flexible)</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Beta-Titanio (tecnología y minimalismo)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1551913226-2d2e202c6bad?q=80&w=2070&auto=format&fit=crop');">
+                            <div class="product-overlay">
+                                <h3>Lentes de Fórmula</h3>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <p>Tecnología avanzada en lentes para satisfacer cada necesidad visual con las mejores marcas.</p>
+                            <ul style="margin-top: 1rem;">
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> CR-39 (alta definición)</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Policarbonato (resistente)</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Alto Índice (ultradelgados)</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Progresivos (multifocales)</li>
+                                <li><i class="fas fa-check" style="color: var(--secondary-color);"></i> Transitions® (adaptables)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 4rem;">
+                    <h3 style="text-align: center; font-size: 2rem; color: var(--primary-color); margin-bottom: 2rem;">Nuestros Servicios Adicionales</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                            <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h4>Envíos a Domicilio</h4>
+                            <p>Recibe tus productos en la puerta de tu casa con nuestro servicio seguro y rápido de entrega nacional. Gratuito con membresía.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                            <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Mentoría Empresarial</h4>
+                            <p>Impulsa tu emprendimiento con la experiencia de Andrés Aguiar. Auditorías, estrategias y mitigación de riesgos para tu negocio.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-md);">
+                            <div style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4>Ajustes y Reparaciones</h4>
+                            <p>Servicio técnico especializado para ajustar, reparar o mantener tus gafas en perfecto estado. Duraderas como nuevas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+<section style="background: white;">
+    <div class="container">
+        <h2 class="section-title">Una Visión con Propósito</h2>
+        <p class="section-subtitle">Galería de nuestro impacto social y trabajo comunitario</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1573496799652-408d1c1b3c2d?q=80&w=2070&auto=format&fit=crop" alt="Brigadas de Salud Visual">
+                <div class="gallery-overlay">
+                    <h4>Brigadas de Salud Visual</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop" alt="Trabajo comunitario">
+                <div class="gallery-overlay">
+                    <h4>Trabajo Comunitario</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581578021517-5d8ad8597858?q=80&w=2070&auto=format&fit=crop" alt="Entrega de donaciones">
+                <div class="gallery-overlay">
+                    <h4>Entrega de Donaciones</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=2080&auto=format&fit=crop" alt="Exámenes visuales">
+                <div class="gallery-overlay">
+                    <h4>Exámenes Visuales</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop" alt="Talleres educativos">
+                <div class="gallery-overlay">
+                    <h4>Talleres Educativos</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop" alt="Comunidades beneficiadas">
+                <div class="gallery-overlay">
+                    <h4>Comunidades Beneficiadas</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Jobs Section -->
+        <section id="trabaja-con-nosotros">
+            <div class="container">
+                <h2 class="section-title">Únete al Equipo</h2>
+                <p class="section-subtitle">Construyamos juntos una visión de futuro</p>
+                
+                <div style="background: white; padding: 3rem; border-radius: var(--border-radius); margin: 2rem 0; box-shadow: var(--shadow-md);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; text-align: center;">¿Por qué trabajar con nosotros?</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; text-align: center;">
+                        En Vision Ing estamos construyendo más que una empresa: estamos creando una comunidad de líderes, innovadores y soñadores. Si tienes el espíritu emprendedor, la visión de ayudar a otros y las ganas de ser tu propio jefe, te invitamos a ser parte de nuestra familia.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <i class="fas fa-home" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                            <h4>Trabajo Remoto</h4>
+                            <p>Flexibilidad para trabajar desde donde elijas</p>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                            <h4>Desarrollo Continuo</h4>
+                            <p>Programas de capacitación y crecimiento profesional</p>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <i class="fas fa-heart" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                            <h4>Impacto Social</h4>
+                            <p>Trabaja con propósito y genera cambio real</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; font-size: 2rem; color: var(--primary-color); margin: 3rem 0 2rem;">Vacantes Disponibles</h3>
+                
+                <div class="jobs-container">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h4 class="job-title">Optometrista Digital</h4>
+                            <span class="job-type">Remoto</span>
+                        </div>
+                        <p>Realiza consultas virtuales y brinda asesoramiento profesional a nuestros clientes desde la comodidad de tu hogar.</p>
+                        <ul style="margin: 1rem 0;">
+                            <li><i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i> Trabajo 100% remoto</li>
+                            <li><i class="fas fa-clock" style="color: var(--accent-color);"></i> Tiempo completo o parcial</li>
+                            <li><i class="fas fa-dollar-sign" style="color: var(--accent-color);"></i> Salario competitivo + comisiones</li>
+                        </ul>
+                        <a href="#contacto" class="btn" style="width: 100%; text-align: center;">Aplicar Ahora</a>
+                    </div>
+                    
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h4 class="job-title">Asesor de Ventas</h4>
+                            <span class="job-type">Remoto</span>
+                        </div>
+                        <p>Ayuda a nuestros clientes a encontrar las soluciones visuales perfectas a través de nuestro canal digital.</p>
+                        <ul style="margin: 1rem 0;">
+                            <li><i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i> Trabajo 100% remoto</li>
+                            <li><i class="fas fa-clock" style="color: var(--accent-color);"></i> Tiempo completo con horarios flexibles</li>
+                            <li><i class="fas fa-dollar-sign" style="color: var(--accent-color);"></i> Salario base + comisiones atractivas</li>
+                        </ul>
+                        <a href="#contacto" class="btn" style="width: 100%; text-align: center;">Aplicar Ahora</a>
+                    </div>
+                    
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h4 class="job-title">Desarrollador Web</h4>
+                            <span class="job-type">Remoto</span>
+                        </div>
+                        <p>Ayuda a mejorar y mantener nuestra plataforma digital para ofrecer la mejor experiencia a nuestros clientes.</p>
+                        <ul style="margin: 1rem 0;">
+                            <li><i class="fas fa-map-marker-alt" style="color: var(--accent-color);"></i> Trabajo 100% remoto</li>
+                            <li><i class="fas fa-clock" style="color: var(--accent-color);"></i> Tiempo completo</li>
+                            <li><i class="fas fa-dollar-sign" style="color: var(--accent-color);"></i> Salario competitivo según experiencia</li>
+                        </ul>
+                        <a href="#contacto" class="btn" style="width: 100%; text-align: center;">Aplicar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="background: var(--background-light);">
+            <div class="container">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Resolvemos tus dudas más comunes</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Qué es Vision Ing?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Vision Ing es una óptica virtual que forma parte de Alliance Group, dedicada a ofrecer soluciones de salud visual de alta calidad a precios justos. Combinamos tecnología, transparencia y compromiso social para revolucionar la industria óptica.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Cómo funcionan las membresías?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ofrecemos dos tipos de membresía: VIP Platinum (gratuita) con descuentos del 30% y comisiones por referidos, y Golden (de pago) con beneficios adicionales como transporte gratuito, acceso a la Universidad Vision Ing y alianzas exclusivas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Qué es el compromiso social G3?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>G3 es nuestro programa de responsabilidad social donde destinamos una parte de cada compra a llevar salud visual a comunidades vulnerables, fundaciones y geriátricos. Cada vez que adquieres nuestros productos, estás contribuyendo a esta causa social.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>¿Cómo realizan los exámenes de la vista de forma virtual?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Contamos con tecnología especializada y profesionales certificados que guían a los pacientes a través de videollamadas para realizar evaluaciones visuales precisas. Para fórmulas complejas, coordinamos citas con optómetras asociados en diferentes ciudades.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">Estamos aquí para responder todas tus preguntas</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>+57 324 162 9330</p>
+                        <p>Chat directo con nuestro equipo</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@visioning.com</p>
+                        <p>soporte@visioning.com</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Chat en Vivo</h3>
+                        <p>Disponible 24/7</p>
+                        <p>Atendemos tus consultas al instante</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 3rem; border-radius: var(--border-radius); margin-top: 4rem;">
+                    <h3 style="color: white; text-align: center; margin-bottom: 2rem;">Envíanos un Mensaje</h3>
+                    <form>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nombre completo" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Asunto">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Tu mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="margin-top: 1rem;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Vision Ing</h4>
+                    <p>Tu óptica virtual con propósito social. Ofrecemos soluciones visuales de calidad a precios justos, con compromiso comunitario y oportunidades de crecimiento.</p>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                        <a href="#" style="color: #ccc; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: #ccc; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #ccc; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: #ccc; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                        <li><a href="#nuestras-marcas">Nuestras Marcas</a></li>
+                        <li><a href="#membresias">Membresías</a></li>
+                        <li><a href="#productos-servicios">Productos y Servicios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Guía de Talles</a></li>
+                        <li><a href="#">Cuidado de Lentes</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Suscríbete</h4>
+                    <p>Recibe nuestras novedades y promociones exclusivas.</p>
+                    <form style="display: flex; margin-top: 1rem;">
+                        <input type="email" class="form-control" placeholder="Tu correo electrónico" style="border-radius: var(--border-radius) 0 0 var(--border-radius);">
+                        <button type="submit" style="background: var(--secondary-color); color: white; border: none; padding: 0 1rem; border-radius: 0 var(--border-radius) var(--border-radius) 0; cursor: pointer;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Vision Ing - Alliance Group. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="chat-button">
+        <i class="fas fa-comment"></i>
+    </div>
+    <div class="chat-tooltip">
+        ¿Necesitas ayuda? Chatea con nosotros
+    </div>
+
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loader
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1500);
+            
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('i');
+                    
+                    // Toggle answer visibility
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                    
+                    // Rotate icon
+                    icon.classList.toggle('fa-chevron-down');
+                    icon.classList.toggle('fa-chevron-up');
+                });
+            });
+            
+            // Chat button functionality
+            const chatButton = document.querySelector('.chat-button');
+            chatButton.addEventListener('click', () => {
+                alert('¡Hola! Soy Devi, tu asistente virtual. Pronto estaremos disponibles para chatear contigo. Mientras tanto, puedes contactarnos por WhatsApp al +57 324 162 9330.');
+            });
+        });
+    </script>
+</body>
+</html>
+
