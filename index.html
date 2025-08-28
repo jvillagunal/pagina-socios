@@ -1646,6 +1646,7 @@
     </script>
    
     </script>
+    </script>
    
 <!-- ========================================= -->
 <!-- SECCIÓN VAPI - ASISTENTE VIRTUAL DE VOZ -->
@@ -1665,7 +1666,7 @@
 <style>
     .vapi-button {
         position: fixed;
-        top: 100px; /* Cambiado a posición superior */
+        bottom: 110px; /* Colocado justo encima del botón de chat */
         right: 30px;
         width: 60px;
         height: 60px;
@@ -1678,7 +1679,7 @@
         font-size: 1.5rem;
         cursor: pointer;
         box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
-        z-index: 998;
+        z-index: 999; /* Mismo z-index que el botón de chat */
         transition: all 0.3s ease;
     }
     
@@ -1689,7 +1690,7 @@
     
     .vapi-tooltip {
         position: fixed;
-        top: 170px; /* Ajustado para posición superior */
+        bottom: 180px; /* Ajustado para estar encima del botón VAPI */
         right: 30px;
         background: white;
         color: #4B0082;
@@ -1702,7 +1703,7 @@
         transform: translateY(10px);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         pointer-events: none;
-        z-index: 997;
+        z-index: 998; /* Un z-index menor que el botón pero mayor que otros elementos */
     }
     
     .vapi-button:hover + .vapi-tooltip {
@@ -1798,7 +1799,9 @@
 </script>
 <!-- Fin de la sección VAPI -->
 </body>
-</html>
+</html>   
+
+
 
 
 
