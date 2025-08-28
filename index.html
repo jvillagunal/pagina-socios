@@ -1647,165 +1647,49 @@
    
 
 
-    <!-- ========================================= -->
+<!-- ========================================= -->
 <!-- SECCIÓN VAPI - ASISTENTE VIRTUAL DE VOZ -->
 <!-- ========================================= -->
 <!-- Para eliminar VAPI, borre desde esta línea -->
 <!-- hasta el final del documento -->
 
-<!-- Botón de VAPI -->
-<div class="vapi-button">
-    <i class="fas fa-microphone"></i>
-</div>
-<div class="vapi-tooltip">
-    Habla con nuestro asistente virtual
-</div>
-
-<!-- Estilos específicos para VAPI -->
-<style>
-    .vapi-button {
-        position: fixed;
-        bottom: 110px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #8A2BE2, #4B0082);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        cursor: pointer;
-        box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
-        z-index: 998;
-        transition: all 0.3s ease;
-    }
-    
-    .vapi-button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
-    }
-    
-    .vapi-tooltip {
-        position: fixed;
-        bottom: 180px;
-        right: 30px;
-        background: white;
-        color: #4B0082;
-        padding: 0.8rem 1.2rem;
-        border-radius: 12px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        font-size: 0.9rem;
-        font-weight: 500;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: none;
-        z-index: 997;
-    }
-    
-    .vapi-button:hover + .vapi-tooltip {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Estado activo durante una llamada */
-    .vapi-active {
-        background: linear-gradient(135deg, #FF6B6B, #FF8E53) !important;
-        animation: pulse 1.5s infinite;
-    }
-    
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-        }
-        70% {
-            box-shadow: 0 0 0 15px rgba(255, 107, 107, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
-        }
-    }
-</style>
-
-<!-- Script de VAPI -->
 <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi-web.js"></script>
 <script>
     // Inicializar VAPI después de que la página cargue completamente
     document.addEventListener('DOMContentLoaded', function() {
-        // Solo inicializar si los elementos de VAPI existen
-        const vapiButton = document.querySelector('.vapi-button');
-        if (!vapiButton) return;
-        
-        // Configuración de VAPI
-        const vapi = new Vapi('143c53e0-6bb3-4e28-8c96-96cf27dd0256');
-        
-        // Configurar el asistente
-        vapi.setAssistant({
-            id: 'a1298151-d39e-4626-9fda-402998cba1fc',
-            transcriber: {
-                model: 'deepgram',
-                provider: 'deepgram',
-                language: 'es'
-            },
-            voice: {
-                model: 'eleven_multilingual_v1',
-                provider: '11labs',
-                stability: 0.4,
-                similarityBoost: 0.8
-            }
-        });
-        
-        // Evento de clic para iniciar/terminar llamada
-        let callActive = false;
-        
-        vapiButton.addEventListener('click', function() {
-            if (callActive) {
-                vapi.stop();
-            } else {
-                vapi.start();
-            }
-        });
-        
-        // Eventos de VAPI para retroalimentación visual
-        vapi.on('call-start', () => {
-            callActive = true;
-            vapiButton.classList.add('vapi-active');
-            vapiButton.innerHTML = '<i class="fas fa-phone-slash"></i>';
-            document.querySelector('.vapi-tooltip').textContent = 'Finalizar llamada';
-        });
-        
-        vapi.on('call-end', () => {
-            callActive = false;
-            vapiButton.classList.remove('vapi-active');
-            vapiButton.innerHTML = '<i class="fas fa-microphone"></i>';
-            document.querySelector('.vapi-tooltip').textContent = 'Habla con nuestro asistente virtual';
-        });
-        
-        vapi.on('error', (error) => {
-            console.error('Error con VAPI:', error);
-            alert('Lo sentimos, nuestro asistente de voz no está disponible en este momento. Por favor, intenta nuevamente más tarde.');
+        try {
+            // Configuración de VAPI
+            const vapi = new Vapi('143c53e0-6bb3-4e28-8c96-96cf27dd0256');
             
-            // Restablecer estado en caso de error
-            callActive = false;
-            vapiButton.classList.remove('vapi-active');
-            vapiButton.innerHTML = '<i class="fas fa-microphone"></i>';
-            document.querySelector('.vapi-tooltip').textContent = 'Habla con nuestro asistente virtual';
-        });
-        
-        // También puedes agregar más eventos según sea necesario
-        vapi.on('speech-start', () => {
-            console.log('El asistente comenzó a hablar');
-        });
-        
-        vapi.on('speech-end', () => {
-            console.log('El asistente terminó de hablar');
-        });
-        
-        vapi.on('message', (message) => {
-            console.log('Mensaje recibido:', message);
-        });
+            // Configurar el asistente
+            vapi.setAssistant({
+                id: 'a1298151-d39e-4626-9fda-402998cba1fc',
+                transcriber: {
+                    model: 'deepgram',
+                    provider: 'deepgram',
+                    language: 'es'
+                },
+                voice: {
+                    model: 'eleven_multilingual_v1',
+                    provider: '11labs',
+                    stability: 0.4,
+                    similarityBoost: 0.8
+                }
+            });
+            
+            // Mostrar el botón predeterminado de VAPI
+            vapi.showButton({
+                position: 'bottom-right'
+            });
+            
+            // Manejo de errores
+            vapi.on('error', (error) => {
+                console.error('Error con VAPI:', error);
+            });
+            
+        } catch (error) {
+            console.error('Error al inicializar VAPI:', error);
+        }
     });
 </script>
 <!-- Fin de la sección VAPI -->
@@ -1813,6 +1697,7 @@
 
 </body>
 </html>
+
 
 
 
