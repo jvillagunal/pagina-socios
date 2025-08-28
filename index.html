@@ -155,10 +155,21 @@
             transition: var(--transition);
         }
 
-        .dropdown-content a:hover {
-            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), rgba(255, 107, 53, 0.1));
-            padding-left: 30px;
-        }
+        .dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 250px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 0;
+    top: 100%;
+    left: 50%; /* Alinea al 50% del ancho del padre */
+    transform: translateX(-50%); /* Desplaza el menú a la izquierda para centrarlo */
+    opacity: 0;
+    transition: var(--transition);
+}
 
         .dropdown:hover .dropdown-content {
             display: block;
@@ -1765,6 +1776,7 @@
     </script>
 </body>
 </html>
+
 
 
 
