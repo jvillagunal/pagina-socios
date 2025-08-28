@@ -1637,18 +1637,19 @@
                 });
             });
 
-            <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const chatButton = document.querySelector('.chat-button');
-        const whatsappNumber = '+573241629330';
-        const whatsappMessage = 'Hola, estoy interesado en tus servicios.';
+            // Chat button functionality
 
-        chatButton.addEventListener('click', () => {
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappURL, '_blank');
-        });
-    });
-</script>
+            const chatButton = document.querySelector('.chat-button');
+
+            chatButton.addEventListener('click', () => {
+
+                alert('¡Hola! Soy Devi, tu asistente virtual. Pronto estaremos disponibles para chatear contigo. Mientras tanto, puedes contactarnos por WhatsApp al +57 324 162 9330.');
+
+            });
+
+        });
+
+    </script>
     
 
    
@@ -1804,6 +1805,7 @@
 <!-- Fin de la sección VAPI -->
 </body>
 </html>   
+
 
 
 
