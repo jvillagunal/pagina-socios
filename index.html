@@ -1645,6 +1645,8 @@
         });
     </script>
    
+    </script>
+   
 <!-- ========================================= -->
 <!-- SECCIÓN VAPI - ASISTENTE VIRTUAL DE VOZ -->
 <!-- ========================================= -->
@@ -1663,7 +1665,7 @@
 <style>
     .vapi-button {
         position: fixed;
-        bottom: 110px;
+        top: 100px; /* Cambiado a posición superior */
         right: 30px;
         width: 60px;
         height: 60px;
@@ -1687,7 +1689,7 @@
     
     .vapi-tooltip {
         position: fixed;
-        bottom: 180px;
+        top: 170px; /* Ajustado para posición superior */
         right: 30px;
         background: white;
         color: #4B0082;
@@ -1731,6 +1733,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi-web.js"></script>
 <script>
     // Inicializar VAPI después de que la página cargue completamente
+    // Este script es independiente y no necesita estar dentro del otro DOMContentLoaded
     document.addEventListener('DOMContentLoaded', function() {
         // Solo inicializar si los elementos de VAPI existen
         const vapiButton = document.querySelector('.vapi-button');
@@ -1791,28 +1794,14 @@
             vapiButton.innerHTML = '<i class="fas fa-microphone"></i>';
             document.querySelector('.vapi-tooltip').textContent = 'Habla con nuestro asistente virtual';
         });
-        
-        // También puedes agregar más eventos según sea necesario
-        vapi.on('speech-start', () => {
-            console.log('El asistente comenzó a hablar');
-        });
-        
-        vapi.on('speech-end', () => {
-            console.log('El asistente terminó de hablar');
-        });
-        
-        vapi.on('message', (message) => {
-            console.log('Mensaje recibido:', message);
-        });
     });
 </script>
 <!-- Fin de la sección VAPI -->
-
-
-
-
 </body>
 </html>
+
+
+
 
 
 
