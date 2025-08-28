@@ -1636,20 +1636,21 @@
                     icon.classList.toggle('fa-chevron-up');
                 });
             });
-             </script>
-            document.addEventListener('DOMContentLoaded', () => {
-    const chatButton = document.querySelector('.chat-button');
-    const whatsappNumber = '+573241629330'; // Reemplaza con tu número de teléfono, sin espacios ni caracteres especiales.
-    const whatsappMessage = 'Hola, estoy interesado en tus servicios.'; // Mensaje predeterminado para el chat.
 
-    chatButton.addEventListener('click', () => {
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappURL, '_blank');
+            <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatButton = document.querySelector('.chat-button');
+        const whatsappNumber = '+573241629330';
+        const whatsappMessage = 'Hola, estoy interesado en tus servicios.';
+
+        chatButton.addEventListener('click', () => {
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank');
+        });
     });
-});
-   
-    </script>
+</script>
     
+
    
 <!-- ========================================= -->
 <!-- SECCIÓN VAPI - ASISTENTE VIRTUAL DE VOZ -->
@@ -1803,6 +1804,7 @@
 <!-- Fin de la sección VAPI -->
 </body>
 </html>   
+
 
 
 
