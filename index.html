@@ -1653,57 +1653,60 @@
 <!-- Para eliminar VAPI, borre desde esta línea -->
 <!-- hasta el final del documento -->
 
-
+<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/vapi-web.js"></script>
+<script>
+    // Inicializar VAPI después de que la página cargue completamente
     document.addEventListener('DOMContentLoaded', function() {
-        const vapiButton = document.querySelector('.vapi-button');
-        if (!vapiButton) return;
-
-        const vapi = new Vapi('143c53e0-6bb3-4e28-8c96-96cf27dd0256');
-
-        vapi.setAssistant({
-            id: 'a1298151-d39e-4626-9fda-402998cba1fc',
-            transcriber: {
-                model: 'deepgram',
-                provider: 'deepgram',
-                language: 'es'
-            },
-            voice: {
-                model: 'eleven_multilingual_v1',
-                provider: '11labs',
-                stability: 0.4,
-                similarityBoost: 0.8
-            }
-        });
-
-        let callActive = false;
-
-        vapiButton.addEventListener('click', function() {
-            if (callActive) {
-                vapi.stop();
-            } else {
-                vapi.start();
-            }
-        });
-
-        vapi.on('call-start', () => {
-            callActive = true;
-            vapiButton.classList.add('vapi-active');
-            vapiButton.innerHTML = '<i class="fas fa-phone-slash"></i>';
-            document.querySelector('.vapi-tooltip').textContent = 'Finalizar llamada';
-        });
-
-        vapi.on('call-end', () => {
-            callActive = false;
-            vapiButton.classList.remove('vapi-active');
-            vapiButton.innerHTML = '<i class="fas fa-microphone"></i>';
-            document.querySelector('.vapi-tooltip').textContent = 'Habla con nuestro asistente virtual';
-        });
+        try {
+            // Configuración de VAPI
+            const vapi = new Vapi('143c53e0-6bb3-4e28-8c96-96cf27dd0256');
+            
+            // Configurar el asistente
+            vapi.setAssistant({
+                id: 'a1298151-d39e-4626-9fda-402998cba1fc',
+                transcriber: {
+                    model: 'deepgram',
+                    provider: 'deepgram',
+                    language: 'es'
+                },
+                voice: {
+                    model: 'eleven_multilingual_v1',
+                    provider: '11labs',
+                    stability: 0.4,
+                    similarityBoost: 0.8
+                }
+            });
+            
+            // Mostrar el botón predeterminado de VAPI en la parte superior derecha
+            vapi.showButton({
+                position: 'top-right'
+            });
+            
+            // Ajustar el estilo del botón para que no interfiera con el header
+            setTimeout(() => {
+                const vapiButton = document.querySelector('.vapi-button');
+                if (vapiButton) {
+                    vapiButton.style.top = '80px'; // Ajustar para que no se superponga con el header
+                    vapiButton.style.right = '20px';
+                }
+            }, 1000);
+            
+            // Manejo de errores
+            vapi.on('error', (error) => {
+                console.error('Error con VAPI:', error);
+            });
+            
+        } catch (error) {
+            console.error('Error al inicializar VAPI:', error);
+        }
     });
 </script>
+<!-- Fin de la sección VAPI -->
 
 
 </body>
 </html>
+
 
 
 
